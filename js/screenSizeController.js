@@ -1,0 +1,43 @@
+/**
+ * Created by Imalka Gunawardana on 9/8/2017.
+ */
+//-------------------------------------------------------Media Queries--------------------------------------------------
+function setMediaSize(outerPanelSize,boardSize,elementSize,pos1,pos2,imgSize) {
+    setOuterPanel(outerPanelSize);
+    elementBoard.setSize(boardSize,elementSize);
+    for(var i=0;i<8;i++) {
+        for (var j = 0; j < 8; j++) {
+            elementPieces.setSize(i,j,elementSize);
+        }
+    }
+    for(var j=0;j<10;j++){
+        elementOuterPieces.setSize(1,j,elementSize,divOuterLeft[j],pos1);
+        elementOuterPieces.setSize(2,j,elementSize,divOuterLeft[j],pos2);
+        elementOuterPieces.setSize(3,j,elementSize,pos1,divOuterTop[j]);
+        elementOuterPieces.setSize(4,j,elementSize,pos2,divOuterTop[j]);
+    }
+    for(var i=1;i<=32;i++){
+        element.setSize(i,elementSize,imgSize);
+    }
+}
+
+function mediaSize() {
+    if(window.matchMedia("(min-width: 720px)").matches){
+        divPos=[0,87.5,175,262.5,350,437.5,525,612.5];
+        divOuterTop=[87.5,175,262.5,350,437.5,525,612.5,700];
+        divOuterLeft=[0,87.5,175,262.5,350,437.5,525,612.5,700,787.5];
+        setMediaSize("875px","700px","87.5px",divOuterLeft[0],divOuterLeft[9],"80px");
+    }else if(window.matchMedia("(min-width: 320px)").matches){
+        divPos=[0,75,150,225,300,375,450,525];
+        divOuterTop=[75,150,225,300,375,450,525,600];
+        divOuterLeft=[0,75,150,225,300,375,450,525,600,675];
+        setMediaSize("475px","300px","75px",divOuterLeft[0],divOuterLeft[9],"67.5px");
+    }else if(window.matchMedia("(min-width: 120px)").matches){
+        divPos=[0,34.5,69,103.5,138,172.5,207,241.5];
+        divOuterTop=[34.5,69,103.5,138,172.5,207,241.5,276];
+        divOuterLeft=[0,34.5,69,103.5,138,172.5,207,241.5,276,310.5];
+        setMediaSize("276px","100px","34.5px",divOuterLeft[0],divOuterLeft[9],"27px");
+    }
+}
+mediaSize();
+window.addEventListener('resize',mediaSize);
