@@ -34,7 +34,7 @@ function increDivId(i) {
     }
 }
 
-$(".chessArea").bind('click touchstart',function (){
+$(".chessArea").click(function (){
     if($(this).children().length==1){
         imageId=$(this).children().attr('id').substring(13);
         imageClass=$(this).children().attr('class');
