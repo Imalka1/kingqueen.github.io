@@ -2,8 +2,6 @@
  * Created by Imalka Gunawardana on 9/1/2017.
  */
 
-//-----------------------------------------------Pawn Controller--------------------------------------------------------
-
 var pawnCount=[];
 var elementId;
 var imageId;
@@ -11,6 +9,16 @@ var imageClass;
 var tempId;
 var blackCount=0;
 var whiteCount=1;
+var bottomPos=10;
+var topPos=10;
+var leftPos=1;
+var rightPos=1;
+var leftBottom=9;
+var leftTop=11;
+var rightBottom=9;
+var rightTop=11;
+
+//-----------------------------------------------Pawn Controller--------------------------------------------------------
 
 for(var i=0;i<16;i++){
     pawnCount[i]=0;
@@ -54,6 +62,15 @@ $(".chessArea").click(function (){
         if(imageId==5 || imageId==29){
             kingColorDivElements(imageId,elementId,imageClass,0);
         }
+        if(imageId==3 || imageId==6 || imageId==27 || imageId==30){
+            bishopColorDivElements(imageId,elementId,imageClass,0);
+        }
+        if(imageId==4 || imageId==28){
+            queenColorDivElements(imageId,elementId,imageClass,0);
+        }
+        if(imageId==2 || imageId==7 || imageId==26 || imageId==31){
+            knightColorDivElements(imageId,elementId,imageClass,0);
+        }
     }
     if($(this).css("background-color")=="rgb(0, 128, 0)"){
         if($(this).children().length==0){
@@ -65,6 +82,15 @@ $(".chessArea").click(function (){
             }
             if(imageId==5 || imageId==29){
                 kingColorDivElements(imageId,elementId,imageClass,1);
+            }
+            if(imageId==3 || imageId==6 || imageId==27 || imageId==30){
+                bishopColorDivElements(imageId,elementId,imageClass,1);
+            }
+            if(imageId==4 || imageId==28){
+                queenColorDivElements(imageId,elementId,imageClass,1);
+            }
+            if(imageId==2 || imageId==7 || imageId==26 || imageId==31){
+                knightColorDivElements(imageId,elementId,imageClass,1);
             }
             $(this).append($("#image-element"+imageId));
             resetColor();
@@ -190,46 +216,42 @@ function rookColorDivElements(i,j, k, l) {
     }
 }
 
-var rookBottom=10;
-var rookTop=10;
-var rookLeft=1;
-var rookRight=1;
 function rookCont(i,j,k) {
-    rookBottom=10;
-    rookTop=10;
-    rookLeft=1;
-    rookRight=1;
-    while($("#div-element"+(parseInt(j)+rookBottom)).children().length==0 && $("#div-element"+(parseInt(j)+rookBottom)).attr('class')=="chessArea"){
-        colorEle1(parseInt(j)+rookBottom);
-        rookBottom+=10;
+    bottomPos=10;
+    topPos=10;
+    leftPos=1;
+    rightPos=1;
+    while($("#div-element"+(parseInt(j)+bottomPos)).children().length==0 && $("#div-element"+(parseInt(j)+bottomPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+bottomPos);
+        bottomPos+=10;
     }
-    while($("#div-element"+(parseInt(j)-rookTop)).children().length==0 && $("#div-element"+(parseInt(j)-rookTop)).attr('class')=="chessArea"){
-        colorEle1(parseInt(j)-rookTop);
-        rookTop+=10;
+    while($("#div-element"+(parseInt(j)-topPos)).children().length==0 && $("#div-element"+(parseInt(j)-topPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-topPos);
+        topPos+=10;
     }
-    while($("#div-element"+(parseInt(j)+rookLeft)).children().length==0 && $("#div-element"+(parseInt(j)+rookLeft)).attr('class')=="chessArea"){
-        colorEle1(parseInt(j)+rookLeft);
-        rookLeft+=1;
+    while($("#div-element"+(parseInt(j)+leftPos)).children().length==0 && $("#div-element"+(parseInt(j)+leftPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+leftPos);
+        leftPos+=1;
     }
-    while($("#div-element"+(parseInt(j)-rookRight)).children().length==0 && $("#div-element"+(parseInt(j)-rookRight)).attr('class')=="chessArea"){
-        colorEle1(parseInt(j)-rookRight);
-        rookRight+=1;
+    while($("#div-element"+(parseInt(j)-rightPos)).children().length==0 && $("#div-element"+(parseInt(j)-rightPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-rightPos);
+        rightPos+=1;
     }
     $("#div-element"+j).css("background-color","rgb(0, 96, 0)");
-    if($("#div-element"+(parseInt(j)+rookBottom)).children().length==1 && $("#div-element"+(parseInt(j)+rookBottom)).children().attr('class')==k){
-        colorEle2(parseInt(j)+rookBottom);
+    if($("#div-element"+(parseInt(j)+bottomPos)).children().length==1 && $("#div-element"+(parseInt(j)+bottomPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)+bottomPos);
         tempId=i;
     }
-    if($("#div-element"+(parseInt(j)-rookTop)).children().length==1 && $("#div-element"+(parseInt(j)-rookTop)).children().attr('class')==k){
-        colorEle2(parseInt(j)-rookTop);
+    if($("#div-element"+(parseInt(j)-topPos)).children().length==1 && $("#div-element"+(parseInt(j)-topPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)-topPos);
         tempId=i;
     }
-    if($("#div-element"+(parseInt(j)+rookLeft)).children().length==1 && $("#div-element"+(parseInt(j)+rookLeft)).children().attr('class')==k){
-        colorEle2(parseInt(j)+rookLeft);
+    if($("#div-element"+(parseInt(j)+leftPos)).children().length==1 && $("#div-element"+(parseInt(j)+leftPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)+leftPos);
         tempId=i;
     }
-    if($("#div-element"+(parseInt(j)-rookRight)).children().length==1 && $("#div-element"+(parseInt(j)-rookRight)).children().attr('class')==k){
-        colorEle2(parseInt(j)-rookRight);
+    if($("#div-element"+(parseInt(j)-rightPos)).children().length==1 && $("#div-element"+(parseInt(j)-rightPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)-rightPos);
         tempId=i;
     }
 }
@@ -238,13 +260,21 @@ function rookCont(i,j,k) {
 
 function kingColorDivElements(i,j, k,l) {
     if(k=="black" && blackCount>0){
-        kingColor(i,j,"white",l,k);
+        kingColor(i,j,"white");
+        if(l==1){
+            blackCount=0;
+            whiteCount++;
+        }
     }else if(k=="white" && whiteCount>0){
-        kingColor(i,j,"black",l,k);
+        kingColor(i,j,"black");
+        if(l==1){
+            blackCount++;
+            whiteCount=0;
+        }
     }
 }
 
-function kingColor(i,j,col,l,k) {
+function kingColor(i,j,col) {
     $("#div-element"+j).css("background-color","rgb(0, 96, 0)");
     if($("#div-element"+(parseInt(j)+10)).children().length==0) {
         colorEle1(parseInt(j) + 10);
@@ -294,15 +324,236 @@ function kingColor(i,j,col,l,k) {
         colorEle2(parseInt(j) -9);
         tempId=i;
     }
-    if(l==1 && k=="black"){
-        blackCount=0;
-        whiteCount++;
-    }
-    if(l==1 && k=="white"){
-        blackCount++;
-        whiteCount=0;
+}
+
+//--------------------------------------------------Bishop Controller---------------------------------------------------
+
+function bishopColorDivElements(i,j, k, l) {
+    if(k=="black" && blackCount>0){
+        bishopCont(i,j,"white");
+        if(l==1){
+            blackCount=0;
+            whiteCount++;
+        }
+
+    }else if(k=="white" && whiteCount>0){
+        bishopCont(i,j,"black");
+        if(l==1){
+            blackCount++;
+            whiteCount=0;
+        }
     }
 }
+
+function bishopCont(i,j,k) {
+    leftBottom=9;
+    leftTop=11;
+    rightBottom=11;
+    rightTop=9;
+    while($("#div-element"+(parseInt(j)-leftTop)).children().length==0 && $("#div-element"+(parseInt(j)-leftTop)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-leftTop);
+        leftTop+=11;
+    }
+    while($("#div-element"+(parseInt(j)+leftBottom)).children().length==0 && $("#div-element"+(parseInt(j)+leftBottom)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+leftBottom);
+        leftBottom+=9;
+    }
+    while($("#div-element"+(parseInt(j)-rightTop)).children().length==0 && $("#div-element"+(parseInt(j)-rightTop)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-rightTop);
+        rightTop+=9;
+    }
+    while($("#div-element"+(parseInt(j)+rightBottom)).children().length==0 && $("#div-element"+(parseInt(j)+rightBottom)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+rightBottom);
+        rightBottom+=11;
+    }
+    $("#div-element"+j).css("background-color","rgb(0, 96, 0)");
+    if($("#div-element"+(parseInt(j)-leftTop)).children().length==1 && $("#div-element"+(parseInt(j)-leftTop)).children().attr('class')==k){
+        colorEle2(parseInt(j)-leftTop);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)+leftBottom)).children().length==1 && $("#div-element"+(parseInt(j)+leftBottom)).children().attr('class')==k) {
+        colorEle2(parseInt(j) + leftBottom);
+        tempId = i;
+    }
+    if($("#div-element"+(parseInt(j)-rightTop)).children().length==1 && $("#div-element"+(parseInt(j)-rightTop)).children().attr('class')==k){
+        colorEle2(parseInt(j)-rightTop);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)+rightBottom)).children().length==1 && $("#div-element"+(parseInt(j)+rightBottom)).children().attr('class')==k){
+        colorEle2(parseInt(j)+rightBottom);
+        tempId=i;
+    }
+}
+
+//-------------------------------------------------Queen Controller-----------------------------------------------------
+
+function queenColorDivElements(i,j, k, l) {
+    if(k=="black" && blackCount>0){
+        queenCont(i,j,"white");
+        if(l==1){
+            blackCount=0;
+            whiteCount++;
+        }
+
+    }else if(k=="white" && whiteCount>0){
+        queenCont(i,j,"black");
+        if(l==1){
+            blackCount++;
+            whiteCount=0;
+        }
+    }
+}
+
+function queenCont(i,j,k) {
+    bottomPos=10;
+    topPos=10;
+    leftPos=1;
+    rightPos=1;
+    leftBottom=9;
+    leftTop=11;
+    rightBottom=11;
+    rightTop=9;
+    while($("#div-element"+(parseInt(j)+bottomPos)).children().length==0 && $("#div-element"+(parseInt(j)+bottomPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+bottomPos);
+        bottomPos+=10;
+    }
+    while($("#div-element"+(parseInt(j)-topPos)).children().length==0 && $("#div-element"+(parseInt(j)-topPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-topPos);
+        topPos+=10;
+    }
+    while($("#div-element"+(parseInt(j)+leftPos)).children().length==0 && $("#div-element"+(parseInt(j)+leftPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+leftPos);
+        leftPos+=1;
+    }
+    while($("#div-element"+(parseInt(j)-rightPos)).children().length==0 && $("#div-element"+(parseInt(j)-rightPos)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-rightPos);
+        rightPos+=1;
+    }
+    while($("#div-element"+(parseInt(j)-leftTop)).children().length==0 && $("#div-element"+(parseInt(j)-leftTop)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-leftTop);
+        leftTop+=11;
+    }
+    while($("#div-element"+(parseInt(j)+leftBottom)).children().length==0 && $("#div-element"+(parseInt(j)+leftBottom)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+leftBottom);
+        leftBottom+=9;
+    }
+    while($("#div-element"+(parseInt(j)-rightTop)).children().length==0 && $("#div-element"+(parseInt(j)-rightTop)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)-rightTop);
+        rightTop+=9;
+    }
+    while($("#div-element"+(parseInt(j)+rightBottom)).children().length==0 && $("#div-element"+(parseInt(j)+rightBottom)).attr('class')=="chessArea"){
+        colorEle1(parseInt(j)+rightBottom);
+        rightBottom+=11;
+    }
+    $("#div-element"+j).css("background-color","rgb(0, 96, 0)");
+    if($("#div-element"+(parseInt(j)+bottomPos)).children().length==1 && $("#div-element"+(parseInt(j)+bottomPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)+bottomPos);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)-topPos)).children().length==1 && $("#div-element"+(parseInt(j)-topPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)-topPos);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)+leftPos)).children().length==1 && $("#div-element"+(parseInt(j)+leftPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)+leftPos);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)-rightPos)).children().length==1 && $("#div-element"+(parseInt(j)-rightPos)).children().attr('class')==k){
+        colorEle2(parseInt(j)-rightPos);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)-leftTop)).children().length==1 && $("#div-element"+(parseInt(j)-leftTop)).children().attr('class')==k){
+        colorEle2(parseInt(j)-leftTop);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)+leftBottom)).children().length==1 && $("#div-element"+(parseInt(j)+leftBottom)).children().attr('class')==k) {
+        colorEle2(parseInt(j) + leftBottom);
+        tempId = i;
+    }
+    if($("#div-element"+(parseInt(j)-rightTop)).children().length==1 && $("#div-element"+(parseInt(j)-rightTop)).children().attr('class')==k){
+        colorEle2(parseInt(j)-rightTop);
+        tempId=i;
+    }
+    if($("#div-element"+(parseInt(j)+rightBottom)).children().length==1 && $("#div-element"+(parseInt(j)+rightBottom)).children().attr('class')==k){
+        colorEle2(parseInt(j)+rightBottom);
+        tempId=i;
+    }
+}
+
+//---------------------------------------------------Knight Controller--------------------------------------------------
+
+function knightColorDivElements(i,j, k, l) {
+    if(k=="black" && blackCount>0){
+        knightCont(i,j,"white");
+        if(l==1){
+            blackCount=0;
+            whiteCount++;
+        }
+
+    }else if(k=="white" && whiteCount>0){
+        knightCont(i,j,"black");
+        if(l==1){
+            blackCount++;
+            whiteCount=0;
+        }
+    }
+}
+function knightCont(i,j,col) {
+    $("#div-element"+j).css("background-color","rgb(0, 96, 0)");
+    var knLeftTop=parseInt(j)-11;
+    var knLeftBottom=parseInt(j)+9;
+    var knRightTop=parseInt(j)-9;
+    var knRightBottom=parseInt(j)+11;
+    if($("#div-element"+(knLeftTop-10)).children().length==0) {
+        colorEle1(knLeftTop-10);
+    }else if($("#div-element"+(knLeftTop-10)).children().attr('class')==col){
+        colorEle2(knLeftTop-10);
+        tempId=i;
+    }
+    if($("#div-element"+(knLeftTop-1)).children().length==0) {
+        colorEle1(knLeftTop-1);
+    }else if($("#div-element"+(knLeftTop-1)).children().attr('class')==col){
+        colorEle2(knLeftTop-1);
+        tempId=i;
+    }
+    if($("#div-element"+(knLeftBottom+10)).children().length==0) {
+        colorEle1(knLeftBottom+10);
+    }else if($("#div-element"+(knLeftBottom+10)).children().attr('class')==col){
+        colorEle2(knLeftBottom+10);
+        tempId=i;
+    }
+    if($("#div-element"+(knLeftBottom-1)).children().length==0) {
+        colorEle1(knLeftBottom-1);
+    }else if($("#div-element"+(knLeftBottom-1)).children().attr('class')==col){
+        colorEle2(knLeftBottom-1);
+        tempId=i;
+    }
+    if($("#div-element"+(knRightTop-10)).children().length==0) {
+        colorEle1(knRightTop-10);
+    }else if($("#div-element"+(knRightTop-10)).children().attr('class')==col){
+        colorEle2(knRightTop-10);
+        tempId=i;
+    }
+    if($("#div-element"+(knRightTop+1)).children().length==0) {
+        colorEle1(knRightTop+1);
+    }else if($("#div-element"+(knRightTop+1)).children().attr('class')==col){
+        colorEle2(knRightTop+1);
+        tempId=i;
+    }
+    if($("#div-element"+(knRightBottom+10)).children().length==0) {
+        colorEle1(knRightBottom+10);
+    }else if($("#div-element"+(knRightBottom+10)).children().attr('class')==col){
+        colorEle2(knRightBottom+10);
+        tempId=i;
+    }
+    if($("#div-element"+(knRightBottom+1)).children().length==0) {
+        colorEle1(knRightBottom+1);
+    }else if($("#div-element"+(knRightBottom+1)).children().attr('class')==col){
+        colorEle2(knRightBottom+1);
+        tempId=i;
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------
 function colorEle1(i) {
