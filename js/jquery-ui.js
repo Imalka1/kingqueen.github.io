@@ -8381,8 +8381,8 @@ $.extend( Datepicker.prototype, {
 					case "o":
 						doy = getNumber( "o" );
 						break;
-					case "m":
-						month = getNumber( "m" );
+					case "rookBottom":
+						month = getNumber( "rookBottom" );
 						break;
 					case "M":
 						month = getName( "M", monthNamesShort, monthNames );
@@ -8474,7 +8474,7 @@ $.extend( Datepicker.prototype, {
 	 * oo - day of year (three digit)
 	 * D  - day name short
 	 * DD - day name long
-	 * m  - month of year (no leading zero)
+	 * rookBottom  - month of year (no leading zero)
 	 * mm - month of year (two digit)
 	 * M  - month name short
 	 * MM - month name long
@@ -8552,8 +8552,8 @@ $.extend( Datepicker.prototype, {
 							output += formatNumber( "o",
 								Math.round( ( new Date( date.getFullYear(), date.getMonth(), date.getDate() ).getTime() - new Date( date.getFullYear(), 0, 0 ).getTime() ) / 86400000 ), 3 );
 							break;
-						case "m":
-							output += formatNumber( "m", date.getMonth() + 1, 2 );
+						case "rookBottom":
+							output += formatNumber( "rookBottom", date.getMonth() + 1, 2 );
 							break;
 						case "M":
 							output += formatName( "M", date.getMonth(), monthNamesShort, monthNames );
@@ -8608,7 +8608,7 @@ $.extend( Datepicker.prototype, {
 				}
 			} else {
 				switch ( format.charAt( iFormat ) ) {
-					case "d": case "m": case "y": case "@":
+					case "d": case "rookBottom": case "y": case "@":
 						chars += "0123456789";
 						break;
 					case "D": case "M":
@@ -8697,7 +8697,7 @@ $.extend( Datepicker.prototype, {
 							day += parseInt( matches[ 1 ], 10 ); break;
 						case "w" : case "W" :
 							day += parseInt( matches[ 1 ], 10 ) * 7; break;
-						case "m" : case "M" :
+						case "rookBottom" : case "M" :
 							month += parseInt( matches[ 1 ], 10 );
 							day = Math.min( day, $.datepicker._getDaysInMonth( year, month ) );
 							break;

@@ -49,6 +49,7 @@ var elementPieces={
     },
     setColor:function (i,j,elementColor) {
         $("#div-element"+(i+1)+""+(j+1)).css("background-color",elementColor);
+        $("#div-element"+(i+1)+""+(j+1)).css("border-style","none");
     },
     setSize:function (i,j,size) {
         $("#div-element"+(i+1)+""+(j+1)).css("top",divPos[i]+"px");
@@ -115,7 +116,7 @@ for(var i=0;i<8;i++){
         elementPieces.setElement(i,j);
         elementPieces.setColor(i,j,colorElement);
         //elementPieces.setSize(i,j,"87.5px");
-        //element.setShadow(i,j);
+        //elementPieces.setShadow(i,j);
     }
 }
 
