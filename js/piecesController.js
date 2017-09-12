@@ -17,6 +17,8 @@ var leftBottom=9;
 var leftTop=11;
 var rightBottom=9;
 var rightTop=11;
+var panelHold1=1;
+var panelHold2=1;
 
 //-----------------------------------------------Pawn Controller--------------------------------------------------------
 
@@ -93,21 +95,45 @@ $(".chessArea").click(function (){
                 knightColorDivElements(imageId,elementId,imageClass,1);
             }
             $(this).append($("#image-element"+imageId));
+            if(imageClass=="black"){
+                blackCount=0;
+                whiteCount++;
+                setTextPanel(1,"rgba(254,188,0,0.2)");
+                setTextPanel(2,"rgb(0, 128, 0)");
+            }else if(imageClass=="white"){
+                blackCount++;
+                whiteCount=0;
+                setTextPanel(1,"rgb(0, 128, 0)");
+                setTextPanel(2,"rgba(254,188,0,0.2)");
+            }
             resetColor();
+            rotatePanelandIcons();
         }
     }
     if($(this).css("background-color")=="rgb(255, 0, 0)"){
+        if($(this).children().attr('class')=="black"){
+            $("#div-holdElement1"+panelHold1).append($(this).children());
+            panelHold1++;
+        }else if($(this).children().attr('class')=="white"){
+            $("#div-holdElement2"+panelHold2).append($(this).children());
+            panelHold2++;
+        }
         $(this).children().remove();
         $(this).append($("#image-element"+tempId));
         if(imageClass=="black"){
             blackCount++;
             whiteCount=0;
+            setTextPanel(1,"rgb(0, 128, 0)");
+            setTextPanel(2,"rgba(254,188,0,0.2)");
         }else if(imageClass=="white"){
             blackCount=0;
             whiteCount++;
+            setTextPanel(1,"rgba(254,188,0,0.2)");
+            setTextPanel(2,"rgb(0, 128, 0)");
         }
         increDivId(tempId);
         resetColor();
+        rotatePanelandIcons();
     }
 });
 
@@ -122,8 +148,8 @@ function pawnColorDivElements(i, j, k, l) {
                 }
             }
             if(l==1){
-                blackCount=0;
-                whiteCount++;
+                //blackCount=0;
+                //whiteCount++;
                 increDivId(i);
             }
             if($("#div-element"+(parseInt(j)+11)).children().length==1 && $("#div-element"+(parseInt(j)+11)).children().attr('class')=="white"){
@@ -150,8 +176,8 @@ function pawnColorDivElements(i, j, k, l) {
                 tempId=i;
             }
             if(l==1){
-                blackCount=0;
-                whiteCount++;
+                //blackCount=0;
+                //whiteCount++;
             }
         }
     }else if(k=="white" && whiteCount>0){
@@ -164,8 +190,8 @@ function pawnColorDivElements(i, j, k, l) {
                 }
             }
             if(l==1){
-                blackCount++;
-                whiteCount=0;
+                //blackCount++;
+                //whiteCount=0;
                 increDivId(i);
             }
             if($("#div-element"+(parseInt(j)-9)).children().length==1 && $("#div-element"+(parseInt(j)-9)).children().attr('class')=="black"){
@@ -190,8 +216,8 @@ function pawnColorDivElements(i, j, k, l) {
                 tempId=i;
             }
             if(l==1){
-                blackCount++;
-                whiteCount=0;
+                //blackCount++;
+               // whiteCount=0;
             }
         }
     }
@@ -203,15 +229,15 @@ function rookColorDivElements(i,j, k, l) {
     if(k=="black" && blackCount>0){
         rookCont(i,j,"white");
         if(l==1){
-            blackCount=0;
-            whiteCount++;
+            //blackCount=0;
+            //whiteCount++;
         }
 
     }else if(k=="white" && whiteCount>0){
         rookCont(i,j,"black");
         if(l==1){
-            blackCount++;
-            whiteCount=0;
+            //blackCount++;
+            //whiteCount=0;
         }
     }
 }
@@ -262,14 +288,14 @@ function kingColorDivElements(i,j, k,l) {
     if(k=="black" && blackCount>0){
         kingColor(i,j,"white");
         if(l==1){
-            blackCount=0;
-            whiteCount++;
+            //blackCount=0;
+            //whiteCount++;
         }
     }else if(k=="white" && whiteCount>0){
         kingColor(i,j,"black");
         if(l==1){
-            blackCount++;
-            whiteCount=0;
+            //blackCount++;
+            //whiteCount=0;
         }
     }
 }
@@ -332,15 +358,15 @@ function bishopColorDivElements(i,j, k, l) {
     if(k=="black" && blackCount>0){
         bishopCont(i,j,"white");
         if(l==1){
-            blackCount=0;
-            whiteCount++;
+            //blackCount=0;
+            //whiteCount++;
         }
 
     }else if(k=="white" && whiteCount>0){
         bishopCont(i,j,"black");
         if(l==1){
-            blackCount++;
-            whiteCount=0;
+           // blackCount++;
+           // whiteCount=0;
         }
     }
 }
@@ -391,15 +417,15 @@ function queenColorDivElements(i,j, k, l) {
     if(k=="black" && blackCount>0){
         queenCont(i,j,"white");
         if(l==1){
-            blackCount=0;
-            whiteCount++;
+          //  blackCount=0;
+          //  whiteCount++;
         }
 
     }else if(k=="white" && whiteCount>0){
         queenCont(i,j,"black");
         if(l==1){
-            blackCount++;
-            whiteCount=0;
+         //   blackCount++;
+         //   whiteCount=0;
         }
     }
 }
@@ -486,15 +512,15 @@ function knightColorDivElements(i,j, k, l) {
     if(k=="black" && blackCount>0){
         knightCont(i,j,"white");
         if(l==1){
-            blackCount=0;
-            whiteCount++;
+           // blackCount=0;
+           // whiteCount++;
         }
 
     }else if(k=="white" && whiteCount>0){
         knightCont(i,j,"black");
         if(l==1){
-            blackCount++;
-            whiteCount=0;
+          //  blackCount++;
+          //  whiteCount=0;
         }
     }
 }
@@ -585,3 +611,6 @@ function resetColor() {
         }
     }
 }
+
+setTextPanel(1,"rgba(254,188,0,0.2)");
+setTextPanel(2,"rgb(0, 128, 0)");

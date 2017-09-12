@@ -19,6 +19,27 @@ function setMediaSize(outerPanelSize,boardSize,elementSize,pos1,pos2,imgSize) {
     for(var i=1;i<=32;i++){
         element.setSize(i,elementSize,imgSize);
     }
+    for(var i=1;i<=2;i++){
+        for(var j=0;j<8;j++){
+            $("#div-holdPanel"+i).append(elementHold.getElement(i,(j+1)));
+            elementHold.setElement(i,(j+1));
+            if(i==1){
+                elementHold.setSize(i,(j+1),"87.5px",divPos[j],divPos[0]);
+            }else{
+                elementHold.setSize(i,(j+1),"87.5px",divPos[j],divPos[1]);
+            }
+
+        }
+        for(var j=8;j<16;j++){
+            $("#div-holdPanel"+i).append(elementHold.getElement(i,(j+1)));
+            elementHold.setElement(i,(j+1));
+            if(i==1){
+                elementHold.setSize(i,(j+1),"87.5px",divPos[j-8],divPos[1]);
+            }else{
+                elementHold.setSize(i,(j+1),"87.5px",divPos[j-8],divPos[0]);
+            }
+        }
+    }
 }
 
 function mediaSize() {
@@ -27,11 +48,15 @@ function mediaSize() {
         divOuterTop=[87.5,175,262.5,350,437.5,525,612.5,700];
         divOuterLeft=[0,87.5,175,262.5,350,437.5,525,612.5,700,787.5];
         setMediaSize("875px","700px","87.5px",divOuterLeft[0],divOuterLeft[9],"80px");
+        setElementHoldPanel(1,"250px","0px","174px","700px",divPos[1],162.5,"Black");
+        setElementHoldPanel(2,"250px","1300px","174px","700px",divPos[1],162.5,"White");
+        setTextSize("70px");
     }else if(window.matchMedia("(min-width: 320px)").matches){
         divPos=[0,75,150,225,300,375,450,525];
         divOuterTop=[75,150,225,300,375,450,525,600];
         divOuterLeft=[0,75,150,225,300,375,450,525,600,675];
         setMediaSize("475px","300px","75px",divOuterLeft[0],divOuterLeft[9],"67.5px");
+        setTextSize("30px");
     }else if(window.matchMedia("(min-width: 120px)").matches){
         divPos=[0,34.5,69,103.5,138,172.5,207,241.5];
         divOuterTop=[34.5,69,103.5,138,172.5,207,241.5,276];
