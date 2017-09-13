@@ -44,12 +44,15 @@ function setMediaSize(outerPanelSize,boardSize,elementSize,pos1,pos2,imgSize) {
 
 function mediaSize() {
     if(window.matchMedia("(orientation: portrait)").matches){
-        $("body").css("background-color","#4A3301");
+        //$("body").css("background-image","none");
+        //$("body").css("background-color","#4A3301");
+        $("body").css("transform","rotate(90deg)");
         console.log("A");
     }else if(window.matchMedia("(orientation: landscape)").matches){
         $("body").css("background-image","url('images/Chess-king.JPG')");
         $("body").css("background-repeat","no-repeat");
         $("body").css("background-attachment","fixed");
+        $("body").css("background-size","cover");
        // $("body").css("background-size","100%, 100%");
     }
     if(window.matchMedia("(min-width: 720px)").matches) {

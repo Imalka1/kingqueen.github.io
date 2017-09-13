@@ -207,15 +207,7 @@ function setFooter(k) {
 }
 
 //---------------------------------------------------Execution----------------------------------------------
-//$("body").css("background-color","#4A3301");
-$("body").css("background-size","cover");
-$("body").css("background-attachment","fixed");
-$("body").css("background-position","center center");
-$("body").css("background-image",'url("images/Chess-king.JPG") no-repeat fixed');
-$("body").css("min-width","1450px");
-$("body").css("min-height","700px");
-$("body").css("position","relative");
-//setOuterPanel("875px");
+
 $("#div-outerPanel").append(elementBoard.getElement());
 elementBoard.setElement();
 //elementBoard.setSize("700px","87.5px");
