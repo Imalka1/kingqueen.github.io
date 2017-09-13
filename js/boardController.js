@@ -211,7 +211,7 @@ function setFooter(k) {
 $("body").css("background-size","cover");
 $("body").css("background-attachment","fixed");
 $("body").css("background-position","center center");
-//$("body").css("background","url('images/Chess-king.JPG') no-repeat fixed");
+$("body").css("background-image",'url("images/Chess-king.JPG") no-repeat fixed');
 $("body").css("min-width","1450px");
 $("body").css("min-height","700px");
 $("body").css("position","relative");
