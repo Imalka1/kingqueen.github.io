@@ -98,13 +98,13 @@ $(".chessArea").click(function (){
             if(imageClass=="black"){
                 blackCount=0;
                 whiteCount++;
-                setTextPanel(1,"rgba(254,188,0,0.2)");
-                setTextPanel(2,"rgb(0, 128, 0)");
+                setTextPanel(1,"rgba(105,73,0,0.8)");
+                setTextPanel(2,"#FFDA67");
             }else if(imageClass=="white"){
                 blackCount++;
                 whiteCount=0;
-                setTextPanel(1,"rgb(0, 128, 0)");
-                setTextPanel(2,"rgba(254,188,0,0.2)");
+                setTextPanel(1,"#FFDA67");
+                setTextPanel(2,"rgba(105,73,0,0.8)");
             }
             resetColor();
             rotatePanelandIcons();
@@ -123,13 +123,13 @@ $(".chessArea").click(function (){
         if(imageClass=="black"){
             blackCount++;
             whiteCount=0;
-            setTextPanel(1,"rgb(0, 128, 0)");
-            setTextPanel(2,"rgba(254,188,0,0.2)");
+            setTextPanel(1,"#FFDA67");
+            setTextPanel(2,"rgba(105,73,0,0.8)");
         }else if(imageClass=="white"){
             blackCount=0;
             whiteCount++;
-            setTextPanel(1,"rgba(254,188,0,0.2)");
-            setTextPanel(2,"rgb(0, 128, 0)");
+            setTextPanel(1,"rgba(105,73,0,0.8)");
+            setTextPanel(2,"#FFDA67");
         }
         increDivId(tempId);
         resetColor();
@@ -612,5 +612,5 @@ function resetColor() {
     }
 }
 
-setTextPanel(1,"rgba(254,188,0,0.2)");
-setTextPanel(2,"rgb(0, 128, 0)");
+setTextPanel(1,"rgb(105,73,0,0.8)");
+setTextPanel(2,"#FFDA67");

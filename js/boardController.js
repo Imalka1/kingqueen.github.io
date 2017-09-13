@@ -17,7 +17,7 @@ function setOuterPanel(size) {
     $("#div-outerPanel").css("height",size);
     $("#div-outerPanel").css("z-index","999");
     $("#div-outerPanel").css("top","150px");
-    $("#div-outerPanel").css("left","20%");
+    $("#div-outerPanel").css("left","300px");
     //$("#div-outerPanel").css("transform","translate(-50%,-43%)");
     $("#div-outerPanel").css("background-color","#45330B");
 }
@@ -55,14 +55,14 @@ function setElementHoldPanel(i,j,k,size1,size2,l,m,n) {
     $("#div-holdPanel"+i).css("height",size2);
     $("#div-holdPanel"+i).css("top",j);
     $("#div-holdPanel"+i).css("left",k);
-    $("#div-holdPanel"+i).css("background-color","rgba(254,188,0,0.1)");
+    $("#div-holdPanel"+i).css("background-color","rgba(105,73,0,0.3)");
     $("#div-textHoldPanel"+i).css("position","absolute");
     $("#div-textHoldPanel"+i).css("width",size1);
     $("#div-textHoldPanel"+i).css("height",l);
     $("#div-textHoldPanel"+i).css("top",m);
     $("#div-textHoldPanel"+i).css("left",k);
     $("#div-textHoldPanel"+i).text(n);
-    $("#div-textHoldPanel"+i).css("background-color","rgba(254,188,0,0.1)");
+    $("#div-textHoldPanel"+i).css("background-color","rgb(105,73,0)");
     $("#div-textHoldPanel"+i).css("line-height","87.5px");
     $("#div-textHoldPanel"+i).css("text-align","center");
     $("#div-textHoldPanel"+i).css("vertical-align","middle");
@@ -84,14 +84,19 @@ function setName(i,j,size1,size2) {
     $("#div-nameTag").css("height",size2);
     $("#div-nameTag").css("top",i);
     $("#div-nameTag").css("left",j);
-    $("#div-nameTag").text("King Queen Chess (www.kingqueenchess.tk)");
-    $("#div-nameTag").css("background-color","#FEBC00");
-    $("#div-nameTag").css("font-weight","bold");
-    $("#div-nameTag").css("text-align","center");
+//    $("#div-nameTag").text("King Queen Chess (www.kingqueenchess.tk)");
+    $("#div-nameTag").css("background-color","rgba(254,188,0,0.7)");
+    $("#headName").css("position","absolute");
+    $("#headName").css("width",size1);
+    $("#headName").css("font-weight","bold");
+    $("#headName").css("text-align","center");
+    $("#headName").css("top","50%");
+    $("#headName").css("left","50%");
+    $("#headName").css("transform","translate(-50%, -50%)");
 }
 
 function setTextSize(i) {
-    $("#div-nameTag").css("font-size",i);
+    $("#headName").css("font-size",i);
 }
 
 //---------------------------------------Elements Hold------------------------------------------------------------
@@ -162,7 +167,7 @@ var elementOuterPieces={
     },
     setElement:function (i,j) {
         $("#div-elementOuterPiece"+i+""+j).css("position","absolute");
-        $("#div-elementOuterPiece"+i+""+j).css("background-color","#694900");
+        $("#div-elementOuterPiece"+i+""+j).css("background-color","rgb(105,73,0)");
         $("#div-elementOuterPiece"+i+""+j).css("color","#251900");
         $("#div-elementOuterPiece"+i+""+j).css("text-align","center");
         $("#div-elementOuterPiece"+i+""+j).css("vertical-align","middle");
@@ -180,9 +185,36 @@ var elementOuterPieces={
     }
 };
 
+//----------------------------------------------------Footer-----------------------------------------------------
+
+function footerTag() {
+    $("#div-footerTag").css("position","absolute");
+    $("#div-footerTag").css("background-color","rgba(52,51,41,0.3)");
+    $("#div-footerTag").css("color","white");
+    $("#div-footerTag").css("left","0px");
+    $("#div-footerTag").css("width","100%");
+    $("#div-footerTag").css("height","250px");
+    $("#nameText").css("position","absolute");
+    $("#nameText").css("top","210px");
+    $("#nameText").css("vertical-align","middle");
+    $("#nameText").css("left","50%");
+    $("#nameText").css("transform","translateX(-50%)");
+    $("#nameText").css("text-align","center");
+}
+
+function setFooter(k) {
+    $("#div-footerTag").css("top",k);
+}
+
 //---------------------------------------------------Execution----------------------------------------------
-$("body").css("background-color","#4A3301");
+//$("body").css("background-color","#4A3301");
 $("body").css("background-size","cover");
+$("body").css("background-attachment","fixed");
+$("body").css("background-position","center center");
+//$("body").css("background","url('images/Chess-king.JPG') no-repeat fixed");
+$("body").css("min-width","1450px");
+$("body").css("min-height","700px");
+$("body").css("position","relative");
 //setOuterPanel("875px");
 $("#div-outerPanel").append(elementBoard.getElement());
 elementBoard.setElement();
@@ -241,4 +273,5 @@ for(var j=0;j<10;j++){
 setElementHoldPanel(1,"250px","0px","175px","700px");
 setElementHoldPanel(2,"250px","1300px","175px","700px");
 setName("0px","0px","100%","100px");
+footerTag();
 

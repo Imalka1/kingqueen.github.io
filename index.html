@@ -1,9 +1,14 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <html>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="css/jquery-ui.css" rel="stylesheet">
     <title>Chess Board</title>
+    <style>
+        body {
+            background: url('images/Chess-king.JPG') no-repeat fixed;
+        }
+    </style>
 </head>
 <body>
 <div id="div-outerPanel"></div>
@@ -11,7 +16,8 @@
 <div id="div-textHoldPanel1"></div>
 <div id="div-holdPanel2"></div>
 <div id="div-textHoldPanel2"></div>
-<div id="div-nameTag"></div>
+<div id="div-nameTag"><div id="headName">King Queen Chess (www.kingqueenchess.tk)</div></div>
+<div id="div-footerTag"><div id="nameText">Developed By Imalka Gunawardana</div></div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/boardController.js"></script>
