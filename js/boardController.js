@@ -17,14 +17,14 @@ function setOuterPanel(size) {
     $("#div-outerPanel").css("height",size);
     $("#div-outerPanel").css("z-index","999");
     $("#div-outerPanel").css("top","150px");
-    $("#div-outerPanel").css("left","300px");
-    //$("#div-outerPanel").css("transform","translate(-50%,-43%)");
+    $("#div-outerPanel").css("left","50%");
+    $("#div-outerPanel").css("transform","translateX(-50%)");
     $("#div-outerPanel").css("background-color","#45330B");
 }
 
 function rotatePanelandIcons() {
     if(rotCount==0){
-        $("#div-outerPanel").css("transform","rotate(180deg)");
+        $("#div-outerPanel").css("transform","translateX(-50%) rotate(180deg)");
         $("#div-outerPanel").css("transition","all 0.7s");
         for(var i=0;i<32;i++){
             if($("#image-element"+(i+1)).parent().attr('class')=="chessArea"){
@@ -35,7 +35,7 @@ function rotatePanelandIcons() {
         }
         rotCount=1;
     }else if(rotCount==1){
-        $("#div-outerPanel").css("transform","rotate(0deg)");
+        $("#div-outerPanel").css("transform","translateX(-50%) rotate(0deg)");
         $("#div-outerPanel").css("transition","all 0.7s");
         for(var i=0;i<32;i++){
             $("#image-element"+(i+1)).css("transform","rotate(0deg)");
@@ -49,24 +49,34 @@ function rotatePanelandIcons() {
 
 //-------------------------------------------------Pieces Hold Panel----------------------------------------------------
 
-function setElementHoldPanel(i,j,k,size1,size2,l,m,n) {
+function setMainHoldPanel(i,j,k) {
+    $("#div-mainHoldPanel").css("position","absolute");
+    $("#div-mainHoldPanel").css("width",i);
+    $("#div-mainHoldPanel").css("height",j);
+    $("#div-mainHoldPanel").css("top",k);
+    $("#div-mainHoldPanel").css("left","50%");
+    $("#div-mainHoldPanel").css("transform","translateX(-50%)");
+    //$("#div-mainHoldPanel").css("background-color","green");
+}
+
+function setElementHoldPanel(i,j,k,m,size1,size2,n,b) {
     $("#div-holdPanel"+i).css("position","absolute");
-    $("#div-holdPanel"+i).css("width",size1);
-    $("#div-holdPanel"+i).css("height",size2);
+    $("#div-holdPanel"+i).css("width",size2);
+    $("#div-holdPanel"+i).css("height",size1);
     $("#div-holdPanel"+i).css("top",j);
-    $("#div-holdPanel"+i).css("left",k);
+    $("#div-holdPanel"+i).css("left",m);
     $("#div-holdPanel"+i).css("background-color","rgba(105,73,0,0.3)");
     $("#div-textHoldPanel"+i).css("position","absolute");
     $("#div-textHoldPanel"+i).css("width",size1);
-    $("#div-textHoldPanel"+i).css("height",l);
-    $("#div-textHoldPanel"+i).css("top",m);
+    $("#div-textHoldPanel"+i).css("height",size1);
+    $("#div-textHoldPanel"+i).css("top",j);
     $("#div-textHoldPanel"+i).css("left",k);
     $("#div-textHoldPanel"+i).text(n);
     $("#div-textHoldPanel"+i).css("background-color","rgb(105,73,0)");
-    $("#div-textHoldPanel"+i).css("line-height","87.5px");
+    $("#div-textHoldPanel"+i).css("line-height",size1);
     $("#div-textHoldPanel"+i).css("text-align","center");
     $("#div-textHoldPanel"+i).css("vertical-align","middle");
-    $("#div-textHoldPanel"+i).css("font-size","30px");
+    $("#div-textHoldPanel"+i).css("font-size",b);
     $("#div-textHoldPanel"+i).css("font-weight","bold");
     $("#div-textHoldPanel"+1).css("color","black");
     $("#div-textHoldPanel"+2).css("color","white");
@@ -78,16 +88,16 @@ function setTextPanel(i,j) {
 
 //---------------------------------------Name Tag------------------------------------------------
 
-function setName(i,j,size1,size2) {
+function setName(size2) {
     $("#div-nameTag").css("position","absolute");
-    $("#div-nameTag").css("width",size1);
+    $("#div-nameTag").css("width","100%");
     $("#div-nameTag").css("height",size2);
-    $("#div-nameTag").css("top",i);
-    $("#div-nameTag").css("left",j);
+    $("#div-nameTag").css("top","0px");
+    $("#div-nameTag").css("left","0px");
 //    $("#div-nameTag").text("King Queen Chess (www.kingqueenchess.tk)");
     $("#div-nameTag").css("background-color","rgba(254,188,0,0.7)");
     $("#headName").css("position","absolute");
-    $("#headName").css("width",size1);
+    $("#headName").css("width","100%");
     $("#headName").css("font-weight","bold");
     $("#headName").css("text-align","center");
     $("#headName").css("top","50%");
@@ -190,13 +200,14 @@ var elementOuterPieces={
 function footerTag() {
     $("#div-footerTag").css("position","absolute");
     $("#div-footerTag").css("background-color","rgba(52,51,41,0.3)");
-    $("#div-footerTag").css("color","white");
+    $("#div-footerTag").css("color","rgba(0,0,0,0.7)");
     $("#div-footerTag").css("left","0px");
     $("#div-footerTag").css("width","100%");
     $("#div-footerTag").css("height","250px");
     $("#nameText").css("position","absolute");
     $("#nameText").css("top","210px");
     $("#nameText").css("vertical-align","middle");
+    $("#nameText").css("width","100%");
     $("#nameText").css("left","50%");
     $("#nameText").css("transform","translateX(-50%)");
     $("#nameText").css("text-align","center");
@@ -264,6 +275,6 @@ for(var j=0;j<10;j++){
 
 setElementHoldPanel(1,"250px","0px","175px","700px");
 setElementHoldPanel(2,"250px","1300px","175px","700px");
-setName("0px","0px","100%","100px");
+setName("100px");
 footerTag();
 
