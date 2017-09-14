@@ -47,7 +47,7 @@ function mediaSize() {
         $("body").css("background-image","url('images/Chess-king6.jpg')");
         $("body").css("background-repeat","no-repeat");
         $("body").css("background-attachment","fixed");
-        //$("body").css("background-size","cover");
+        $("body").css("background-size","cover");
         //$("body").css("background-color","#4A3301");
         //window.alert("Please Switch Your Screen into Landscape Mode For Better Experience");
     }else if(window.matchMedia("(orientation: landscape)").matches){

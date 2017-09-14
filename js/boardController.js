@@ -177,7 +177,7 @@ var elementOuterPieces={
     },
     setElement:function (i,j) {
         $("#div-elementOuterPiece"+i+""+j).css("position","absolute");
-        $("#div-elementOuterPiece"+i+""+j).css("background-color","rgba(105,73,0,0.8)");
+        $("#div-elementOuterPiece"+i+""+j).css("background-color","rgba(105,73,0,0.92)");
         $("#div-elementOuterPiece"+i+""+j).css("color","#251900");
         $("#div-elementOuterPiece"+i+""+j).css("text-align","center");
         $("#div-elementOuterPiece"+i+""+j).css("vertical-align","middle");
