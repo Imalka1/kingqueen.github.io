@@ -19,7 +19,7 @@ function setOuterPanel(size) {
     $("#div-outerPanel").css("top","150px");
     $("#div-outerPanel").css("left","50%");
     $("#div-outerPanel").css("transform","translateX(-50%)");
-    $("#div-outerPanel").css("background-color","#45330B");
+    $("#div-outerPanel").css("background-color","rgba(255,255,255,0)");
 }
 
 function rotatePanelandIcons() {
@@ -177,11 +177,11 @@ var elementOuterPieces={
     },
     setElement:function (i,j) {
         $("#div-elementOuterPiece"+i+""+j).css("position","absolute");
-        $("#div-elementOuterPiece"+i+""+j).css("background-color","rgb(105,73,0)");
+        $("#div-elementOuterPiece"+i+""+j).css("background-color","rgba(105,73,0,0.8)");
         $("#div-elementOuterPiece"+i+""+j).css("color","#251900");
         $("#div-elementOuterPiece"+i+""+j).css("text-align","center");
         $("#div-elementOuterPiece"+i+""+j).css("vertical-align","middle");
-        $("#div-elementOuterPiece"+i+""+j).css("font-size","23px");
+        $("#div-elementOuterPiece"+i+""+j).css("font-size","20px");
         $("#div-elementOuterPiece"+i+""+j).css("border-style","solid");
         $("#div-elementOuterPiece"+i+""+j).css("border-width","1px");
     },
@@ -191,7 +191,7 @@ var elementOuterPieces={
         $("#div-elementOuterPiece"+i+""+j).css("height",size);
         $("#div-elementOuterPiece"+i+""+j).css("top",k+"px");
         $("#div-elementOuterPiece"+i+""+j).css("left",l+"px");
-        $("#div-elementOuterPiece"+i+""+j).css("border-color","#885E00");
+        $("#div-elementOuterPiece"+i+""+j).css("border-color","rgba(136,94,0,0.8)");
     }
 };
 
@@ -227,15 +227,15 @@ for(var i=0;i<8;i++){
     for(var j=0;j<8;j++){
         if(i%2!=0){
             if(j%2!=0){
-                var colorElement="#FFDA67";
+                var colorElement="rgba(255,218,103,1)";
             }else{
-                var colorElement="#885E00";
+                var colorElement="rgba(136,94,0,1)";
             }
         }else{
             if(j%2!=0){
-                var colorElement="#885E00";
+                var colorElement="rgba(136,94,0,1)";
             }else{
-                var colorElement="#FFDA67";
+                var colorElement="rgba(255,218,103,1)";
             }
         }
         $("#div-board").append(elementPieces.getElement(i,j));
