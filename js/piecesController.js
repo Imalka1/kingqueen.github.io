@@ -21,8 +21,8 @@ var panelHold1 = 1;
 var panelHold2 = 1;
 var intervalColor;
 var removedData = [];
-var whiteKingCheck=0;
-var blackKingCheck=0;
+var whiteKingCheck = 0;
+var blackKingCheck = 0;
 
 //-----------------------------------------------Pawn Controller--------------------------------------------------------
 
@@ -179,6 +179,12 @@ $(".chessArea").click(function () {
             setTextPanel(2, "#FFDA67");
             checkKing("black");
         }
+        if (tempId == 5) {
+            blackKingCheck = 0;
+        }
+        if (tempId == 29) {
+            whiteKingCheck = 0;
+        }
         increDivId(tempId);
         resetColor();
         rotatePanelandIcons();
@@ -186,7 +192,7 @@ $(".chessArea").click(function () {
 });
 
 function pawnColorDivElements(i, j, k, l) {
-    if (k == "black" && blackCount > 0 && blackKingCheck==0) {
+    if (k == "black" && blackCount > 0 && blackKingCheck == 0) {
         if (pawnCount[parseInt(i) - 9] == 0) {
             $("#div-element" + j).css("background-color", "rgb(0, 96, 0)");
             if ($("#div-element" + (parseInt(j) + 10)).children().length == 0) {
@@ -228,7 +234,7 @@ function pawnColorDivElements(i, j, k, l) {
                 //whiteCount++;
             }
         }
-    } else if (k == "white" && whiteCount > 0 && whiteKingCheck==0) {
+    } else if (k == "white" && whiteCount > 0 && whiteKingCheck == 0) {
         if (pawnCount[parseInt(i) - 9] == 0) {
             $("#div-element" + j).css("background-color", "rgb(0, 96, 0)");
             if ($("#div-element" + (parseInt(j) - 10)).children().length == 0) {
@@ -274,14 +280,14 @@ function pawnColorDivElements(i, j, k, l) {
 //-------------------------------------------------Rook Controller------------------------------------------------------
 
 function rookColorDivElements(i, j, k, l) {
-    if (k == "black" && blackCount > 0 && blackKingCheck==0) {
+    if (k == "black" && blackCount > 0 && blackKingCheck == 0) {
         rookCont(i, j, "white");
         if (l == 1) {
             //blackCount=0;
             //whiteCount++;
         }
 
-    } else if (k == "white" && whiteCount > 0 && whiteKingCheck==0) {
+    } else if (k == "white" && whiteCount > 0 && whiteKingCheck == 0) {
         rookCont(i, j, "black");
         if (l == 1) {
             //blackCount++;
@@ -338,14 +344,14 @@ function kingColorDivElements(i, j, k, l) {
         if (l == 1) {
             //blackCount=0;
             //whiteCount++;
-            blackKingCheck=0;
+            blackKingCheck = 0;
         }
     } else if (k == "white" && whiteCount > 0) {
         kingColor(i, j, "black");
         if (l == 1) {
             //blackCount++;
             //whiteCount=0;
-            whiteKingCheck=0;
+            whiteKingCheck = 0;
         }
     }
 }
@@ -405,14 +411,14 @@ function kingColor(i, j, col) {
 //--------------------------------------------------Bishop Controller---------------------------------------------------
 
 function bishopColorDivElements(i, j, k, l) {
-    if (k == "black" && blackCount > 0 && blackKingCheck==0) {
+    if (k == "black" && blackCount > 0 && blackKingCheck == 0) {
         bishopCont(i, j, "white");
         if (l == 1) {
             //blackCount=0;
             //whiteCount++;
         }
 
-    } else if (k == "white" && whiteCount > 0 && whiteKingCheck==0) {
+    } else if (k == "white" && whiteCount > 0 && whiteKingCheck == 0) {
         bishopCont(i, j, "black");
         if (l == 1) {
             // blackCount++;
@@ -464,14 +470,14 @@ function bishopCont(i, j, k) {
 //-------------------------------------------------Queen Controller-----------------------------------------------------
 
 function queenColorDivElements(i, j, k, l) {
-    if (k == "black" && blackCount > 0 && blackKingCheck==0) {
+    if (k == "black" && blackCount > 0 && blackKingCheck == 0) {
         queenCont(i, j, "white");
         if (l == 1) {
             //  blackCount=0;
             //  whiteCount++;
         }
 
-    } else if (k == "white" && whiteCount > 0 && whiteKingCheck==0) {
+    } else if (k == "white" && whiteCount > 0 && whiteKingCheck == 0) {
         queenCont(i, j, "black");
         if (l == 1) {
             //   blackCount++;
@@ -559,14 +565,14 @@ function queenCont(i, j, k) {
 //---------------------------------------------------Knight Controller--------------------------------------------------
 
 function knightColorDivElements(i, j, k, l) {
-    if (k == "black" && blackCount > 0 && blackKingCheck==0) {
+    if (k == "black" && blackCount > 0 && blackKingCheck == 0) {
         knightCont(i, j, "white");
         if (l == 1) {
             // blackCount=0;
             // whiteCount++;
         }
 
-    } else if (k == "white" && whiteCount > 0 && whiteKingCheck==0) {
+    } else if (k == "white" && whiteCount > 0 && whiteKingCheck == 0) {
         knightCont(i, j, "black");
         if (l == 1) {
             //  blackCount++;
