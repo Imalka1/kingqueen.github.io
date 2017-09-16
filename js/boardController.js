@@ -26,24 +26,24 @@ function setOuterPanel(size) {
 function rotatePanelandIcons() {
     if (rotCount == 0) {
         $("#div-outerPanel").css("transform", "translateX(-50%) rotate(180deg)");
-        $("#div-outerPanel").css("transition", "all 2s");
+        $("#div-outerPanel").css("transition", "2s");
         for (var i = 0; i < 32; i++) {
             if ($("#image-element" + (i + 1)).parent().attr('class') == "chessArea") {
                 $("#image-element" + (i + 1)).css("transform", "rotate(180deg)");
                 $("#image-element" + (i + 1)).css("top", "-4px");
                 $("#image-element" + (i + 1)).css("left", "-4px");
-                $("#image-element" + (i + 1)).css("transition", "all 2s");
+                $("#image-element" + (i + 1)).css("transition", "2s");
             }
         }
         rotCount = 1;
     } else if (rotCount == 1) {
         $("#div-outerPanel").css("transform", "translateX(-50%) rotate(0deg)");
-        $("#div-outerPanel").css("transition", "all 2s");
+        $("#div-outerPanel").css("transition", "2s");
         for (var i = 0; i < 32; i++) {
             $("#image-element" + (i + 1)).css("transform", "rotate(0deg)");
             $("#image-element" + (i + 1)).css("top", "4px");
             $("#image-element" + (i + 1)).css("left", "4px");
-            $("#image-element" + (i + 1)).css("transition", "all 2s");
+            $("#image-element" + (i + 1)).css("transition", "2s");
         }
         rotCount = 0;
     }
