@@ -8,7 +8,7 @@ var divOuterLeft = [0, 87.5, 175, 262.5, 350, 437.5, 525, 612.5, 700, 787.5];
 var divOuterTextLettes = ["", "A", "B", "C", "D", "E", "F", "G", "H", ""];
 var divOuterTextNumbers = ["", "1", "2", "3", "4", "5", "6", "7", "8", ""];
 var rotCount = 0;
-
+loadPage();
 //---------------------------------------------------Main Panel----------------------------------------------
 
 function setOuterPanel(size) {
@@ -288,7 +288,6 @@ function loadPage(){
     $(".segment").css("width","100%");
     $(".segment").css("height","100%");
 }
-loadPage();
 
 $(window).on("load", function(){
     console.log("Loading done")
