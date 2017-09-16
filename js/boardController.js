@@ -284,7 +284,7 @@ footerTag();
 function loadPage(){
     console.log("Document is ready");
     $(".segment").css("position","fixed");
-    $(".ui").css("z-index",99999);
+    $(".ui").css("z-index",9999999999999999);
     $(".segment").css("width","100%");
     $(".segment").css("height","100%");
 }
