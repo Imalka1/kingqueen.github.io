@@ -279,13 +279,16 @@ setElementHoldPanel(2, "250px", "1300px", "175px", "700px");
 setName("100px");
 footerTag();
 
-$(document).ready(function(){
+//$(document).ready();
+
+function loadPage(){
     console.log("Document is ready");
     $(".segment").css("position","fixed");
     $(".ui").css("z-index",99999);
     $(".segment").css("width","100%");
     $(".segment").css("height","100%");
-});
+}
+loadPage();
 
 $(window).on("load", function(){
     console.log("Loading done")
