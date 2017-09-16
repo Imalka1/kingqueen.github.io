@@ -20,7 +20,7 @@ var rightTop = 11;
 var panelHold1 = 1;
 var panelHold2 = 1;
 var intervalColor;
-var removedData=[];
+var removedData = [];
 
 //-----------------------------------------------Pawn Controller--------------------------------------------------------
 
@@ -110,7 +110,7 @@ $(".chessArea").click(function () {
     }
     if ($(this).css("background-color") == "rgb(0, 128, 0)") {
         if ($(this).children().length == 0) {
-            if(intervalColor!=undefined){
+            if (intervalColor != undefined) {
                 clearInterval(intervalColor);
             }
             if (imageId >= 9 && imageId <= 24) {
@@ -150,7 +150,7 @@ $(".chessArea").click(function () {
         }
     }
     if ($(this).css("background-color") == "rgb(255, 0, 0)") {
-        var rData=$(this).children().attr('id').substring(13);
+        var rData = $(this).children().attr('id').substring(13);
         removedData.push(rData);
         if ($(this).children().attr('class') == "black") {
             $("#div-holdElement1" + panelHold1).append($(this).children());
@@ -159,7 +159,7 @@ $(".chessArea").click(function () {
             $("#div-holdElement2" + panelHold2).append($(this).children());
             panelHold2++;
         }
-        if(intervalColor!=undefined){
+        if (intervalColor != undefined) {
             clearInterval(intervalColor);
         }
         $(this).children().remove();
@@ -660,4 +660,3 @@ function resetColor() {
 
 setTextPanel(1, "rgb(105,73,0,0.8)");
 setTextPanel(2, "#FFDA67");
-

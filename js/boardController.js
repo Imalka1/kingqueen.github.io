@@ -9,6 +9,7 @@ var divOuterTextLettes = ["", "A", "B", "C", "D", "E", "F", "G", "H", ""];
 var divOuterTextNumbers = ["", "1", "2", "3", "4", "5", "6", "7", "8", ""];
 var rotCount = 0;
 loadPage();
+
 //---------------------------------------------------Main Panel----------------------------------------------
 
 function setOuterPanel(size) {
@@ -45,6 +46,128 @@ function rotatePanelandIcons() {
         rotCount = 0;
     }
 
+}
+
+//---------------------------------------------------Chess Board----------------------------------------------
+var elementBoard = {
+    getElement: function () {
+        return $("<div>", {id: "div-board"});
+    },
+    setElement: function () {
+        $("#div-board").css("position", "absolute");
+        $("#div-board").css("z-index", "1");
+    },
+    setSize: function (size, pos) {
+        $("#div-board").css("width", size);
+        $("#div-board").css("height", size);
+        $("#div-board").css("top", pos);
+        $("#div-board").css("left", pos);
+    }
+};
+
+$("#div-outerPanel").append(elementBoard.getElement());
+elementBoard.setElement();
+//elementBoard.setSize("700px","87.5px");
+
+//---------------------------------------------------Chess Pieces----------------------------------------------
+var elementPieces = {
+    getElement: function (i, j) {
+        return $("<div>", {id: "div-element" + (i + 1) + "" + (j + 1)});
+    },
+    setElement: function (i, j) {
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("position", "absolute");
+        $("#div-element" + (i + 1) + "" + (j + 1)).addClass("chessArea");
+    },
+    setColor: function (i, j, elementColor) {
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("background-color", elementColor);
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("border-style", "none");
+    },
+    setSize: function (i, j, size) {
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("top", divPos[i] + "px");
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("left", divPos[j] + "px");
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("width", size);
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("height", size);
+    },
+    setShadow: function (i, j) {
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("-moz-box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("-webkit-box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
+        $("#div-element" + (i + 1) + "" + (j + 1)).css("box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
+    }
+};
+
+for (var i = 0; i < 8; i++) {
+    for (var j = 0; j < 8; j++) {
+        if (i % 2 != 0) {
+            if (j % 2 != 0) {
+                var colorElement = "rgba(255,218,103,1)";
+            } else {
+                var colorElement = "rgba(136,94,0,1)";
+            }
+        } else {
+            if (j % 2 != 0) {
+                var colorElement = "rgba(136,94,0,1)";
+            } else {
+                var colorElement = "rgba(255,218,103,1)";
+            }
+        }
+        $("#div-board").append(elementPieces.getElement(i, j));
+        elementPieces.setElement(i, j);
+        elementPieces.setColor(i, j, colorElement);
+        //elementPieces.setSize(i,j,"87.5px");
+        //elementPieces.setShadow(i,j);
+    }
+}
+
+//---------------------------------------------------Chess Board Border Pieces------------------------------------------
+var elementOuterPieces = {
+    getElement: function (i, j) {
+        return $("<div>", {id: "div-elementOuterPiece" + i + "" + j});
+    },
+    setElement: function (i, j) {
+        $("#div-elementOuterPiece" + i + "" + j).css("position", "absolute");
+        $("#div-elementOuterPiece" + i + "" + j).css("background-color", "rgba(105,73,0,0.92)");
+        $("#div-elementOuterPiece" + i + "" + j).css("color", "#251900");
+        $("#div-elementOuterPiece" + i + "" + j).css("text-align", "center");
+        $("#div-elementOuterPiece" + i + "" + j).css("vertical-align", "middle");
+        $("#div-elementOuterPiece" + i + "" + j).css("border-style", "solid");
+        $("#div-elementOuterPiece" + i + "" + j).css("border-width", "1px");
+    },
+    setSize: function (i, j, size, l, k, m) {
+        $("#div-elementOuterPiece" + i + "" + j).css("line-height", size);
+        $("#div-elementOuterPiece" + i + "" + j).css("width", size);
+        $("#div-elementOuterPiece" + i + "" + j).css("height", size);
+        $("#div-elementOuterPiece" + i + "" + j).css("top", k + "px");
+        $("#div-elementOuterPiece" + i + "" + j).css("left", l + "px");
+        $("#div-elementOuterPiece" + i + "" + j).css("border-color", "rgba(136,94,0,0.8)");
+        $("#div-elementOuterPiece" + i + "" + j).css("font-size", m);
+    }
+};
+
+for (var j = 0; j < 10; j++) {
+    $("#div-outerPanel").append(elementOuterPieces.getElement(1, j));
+    elementOuterPieces.setElement(1, j);
+    //elementOuterPieces.setSize(1,j,"87.5px",divOuterLeft[j],0);
+    $("#div-elementOuterPiece1" + j).text(divOuterTextLettes[10 - (j + 1)]);
+    $("#div-elementOuterPiece1" + j).css("transform", "rotate(180deg)");
+}
+for (var j = 0; j < 10; j++) {
+    $("#div-outerPanel").append(elementOuterPieces.getElement(2, j));
+    elementOuterPieces.setElement(2, j);
+    //elementOuterPieces.setSize(2,j,"87.5px",divOuterLeft[j],787.5);
+    $("#div-elementOuterPiece2" + j).text(divOuterTextLettes[j]);
+}
+for (var j = 0; j < 10; j++) {
+    $("#div-outerPanel").append(elementOuterPieces.getElement(3, j));
+    elementOuterPieces.setElement(3, j);
+    // elementOuterPieces.setSize(3,j,"87.5px",0,divOuterTop[j]);
+    $("#div-elementOuterPiece3" + j).text(divOuterTextNumbers[10 - (j + 2)]);
+}
+for (var j = 0; j < 10; j++) {
+    $("#div-outerPanel").append(elementOuterPieces.getElement(4, j));
+    elementOuterPieces.setElement(4, j);
+    //elementOuterPieces.setSize(4,j,"87.5px",787.5,divOuterTop[j]);
+    $("#div-elementOuterPiece4" + j).text(divOuterTextNumbers[j + 1]);
+    $("#div-elementOuterPiece4" + j).css("transform", "rotate(180deg)");
 }
 
 //-------------------------------------------------Pieces Hold Panel----------------------------------------------------
@@ -86,6 +209,27 @@ function setTextPanel(i, j) {
     $("#div-textHoldPanel" + i).css("background-color", j);
 }
 
+setElementHoldPanel(1, "250px", "0px", "175px", "700px");
+setElementHoldPanel(2, "250px", "1300px", "175px", "700px");
+
+//---------------------------------------Elements Hold------------------------------------------------------------
+
+var elementHold = {
+    getElement: function (i, j) {
+        return $("<div>", {id: "div-holdElement" + i + "" + j});
+    },
+    setElement: function (i, j) {
+        $("#div-holdElement" + i + "" + j).css("position", "absolute");
+        //$("#div-holdElement"+i+""+j).css("background-color","green");
+    },
+    setSize: function (i, j, size, k, l) {
+        $("#div-holdElement" + i + "" + j).css("width", size);
+        $("#div-holdElement" + i + "" + j).css("height", size);
+        $("#div-holdElement" + i + "" + j).css("top", k);
+        $("#div-holdElement" + i + "" + j).css("left", l);
+    }
+};
+
 //---------------------------------------Name Tag------------------------------------------------
 
 function setName(size2) {
@@ -110,91 +254,7 @@ function setTextSize(i) {
     $("#headName").css("font-size", i);
 }
 
-//---------------------------------------Elements Hold------------------------------------------------------------
-
-var elementHold = {
-    getElement: function (i, j) {
-        return $("<div>", {id: "div-holdElement" + i + "" + j});
-    },
-    setElement: function (i, j) {
-        $("#div-holdElement" + i + "" + j).css("position", "absolute");
-        //$("#div-holdElement"+i+""+j).css("background-color","green");
-    },
-    setSize: function (i, j, size, k, l) {
-        $("#div-holdElement" + i + "" + j).css("width", size);
-        $("#div-holdElement" + i + "" + j).css("height", size);
-        $("#div-holdElement" + i + "" + j).css("top", k);
-        $("#div-holdElement" + i + "" + j).css("left", l);
-    }
-};
-
-//---------------------------------------------------Chess Board----------------------------------------------
-var elementBoard = {
-    getElement: function () {
-        return $("<div>", {id: "div-board"});
-    },
-    setElement: function () {
-        $("#div-board").css("position", "absolute");
-        $("#div-board").css("z-index", "1");
-    },
-    setSize: function (size, pos) {
-        $("#div-board").css("width", size);
-        $("#div-board").css("height", size);
-        $("#div-board").css("top", pos);
-        $("#div-board").css("left", pos);
-    }
-};
-
-//---------------------------------------------------Chess Pieces----------------------------------------------
-var elementPieces = {
-    getElement: function (i, j) {
-        return $("<div>", {id: "div-element" + (i + 1) + "" + (j + 1)});
-    },
-    setElement: function (i, j) {
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("position", "absolute");
-        $("#div-element" + (i + 1) + "" + (j + 1)).addClass("chessArea");
-    },
-    setColor: function (i, j, elementColor) {
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("background-color", elementColor);
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("border-style", "none");
-    },
-    setSize: function (i, j, size) {
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("top", divPos[i] + "px");
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("left", divPos[j] + "px");
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("width", size);
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("height", size);
-    },
-    setShadow: function (i, j) {
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("-moz-box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("-webkit-box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
-        $("#div-element" + (i + 1) + "" + (j + 1)).css("box-shadow", "inset 5px 5px 5px rgba(255, 255, 255, .4), inset -5px -5px 5px rgba(0, 0, 0, .4)");
-    }
-};
-
-//---------------------------------------------------Chess Board Border Pieces------------------------------------------
-var elementOuterPieces = {
-    getElement: function (i, j) {
-        return $("<div>", {id: "div-elementOuterPiece" + i + "" + j});
-    },
-    setElement: function (i, j) {
-        $("#div-elementOuterPiece" + i + "" + j).css("position", "absolute");
-        $("#div-elementOuterPiece" + i + "" + j).css("background-color", "rgba(105,73,0,0.92)");
-        $("#div-elementOuterPiece" + i + "" + j).css("color", "#251900");
-        $("#div-elementOuterPiece" + i + "" + j).css("text-align", "center");
-        $("#div-elementOuterPiece" + i + "" + j).css("vertical-align", "middle");
-        $("#div-elementOuterPiece" + i + "" + j).css("font-size", "20px");
-        $("#div-elementOuterPiece" + i + "" + j).css("border-style", "solid");
-        $("#div-elementOuterPiece" + i + "" + j).css("border-width", "1px");
-    },
-    setSize: function (i, j, size, l, k) {
-        $("#div-elementOuterPiece" + i + "" + j).css("line-height", size);
-        $("#div-elementOuterPiece" + i + "" + j).css("width", size);
-        $("#div-elementOuterPiece" + i + "" + j).css("height", size);
-        $("#div-elementOuterPiece" + i + "" + j).css("top", k + "px");
-        $("#div-elementOuterPiece" + i + "" + j).css("left", l + "px");
-        $("#div-elementOuterPiece" + i + "" + j).css("border-color", "rgba(136,94,0,0.8)");
-    }
-};
+setName("100px");
 
 //----------------------------------------------------Footer-----------------------------------------------------
 
@@ -220,78 +280,21 @@ function setFooter(k) {
     $("#div-footerTag").css("top", k);
 }
 
-//---------------------------------------------------Execution----------------------------------------------
-
-$("#div-outerPanel").append(elementBoard.getElement());
-elementBoard.setElement();
-//elementBoard.setSize("700px","87.5px");
-
-for (var i = 0; i < 8; i++) {
-    for (var j = 0; j < 8; j++) {
-        if (i % 2 != 0) {
-            if (j % 2 != 0) {
-                var colorElement = "rgba(255,218,103,1)";
-            } else {
-                var colorElement = "rgba(136,94,0,1)";
-            }
-        } else {
-            if (j % 2 != 0) {
-                var colorElement = "rgba(136,94,0,1)";
-            } else {
-                var colorElement = "rgba(255,218,103,1)";
-            }
-        }
-        $("#div-board").append(elementPieces.getElement(i, j));
-        elementPieces.setElement(i, j);
-        elementPieces.setColor(i, j, colorElement);
-        //elementPieces.setSize(i,j,"87.5px");
-        //elementPieces.setShadow(i,j);
-    }
-}
-
-for (var j = 0; j < 10; j++) {
-    $("#div-outerPanel").append(elementOuterPieces.getElement(1, j));
-    elementOuterPieces.setElement(1, j);
-    //elementOuterPieces.setSize(1,j,"87.5px",divOuterLeft[j],0);
-    $("#div-elementOuterPiece1" + j).text(divOuterTextLettes[10 - (j + 1)]);
-    $("#div-elementOuterPiece1" + j).css("transform", "rotate(180deg)");
-}
-for (var j = 0; j < 10; j++) {
-    $("#div-outerPanel").append(elementOuterPieces.getElement(2, j));
-    elementOuterPieces.setElement(2, j);
-    //elementOuterPieces.setSize(2,j,"87.5px",divOuterLeft[j],787.5);
-    $("#div-elementOuterPiece2" + j).text(divOuterTextLettes[j]);
-}
-for (var j = 0; j < 10; j++) {
-    $("#div-outerPanel").append(elementOuterPieces.getElement(3, j));
-    elementOuterPieces.setElement(3, j);
-    // elementOuterPieces.setSize(3,j,"87.5px",0,divOuterTop[j]);
-    $("#div-elementOuterPiece3" + j).text(divOuterTextNumbers[10 - (j + 2)]);
-}
-for (var j = 0; j < 10; j++) {
-    $("#div-outerPanel").append(elementOuterPieces.getElement(4, j));
-    elementOuterPieces.setElement(4, j);
-    //elementOuterPieces.setSize(4,j,"87.5px",787.5,divOuterTop[j]);
-    $("#div-elementOuterPiece4" + j).text(divOuterTextNumbers[j + 1]);
-    $("#div-elementOuterPiece4" + j).css("transform", "rotate(180deg)");
-}
-
-setElementHoldPanel(1, "250px", "0px", "175px", "700px");
-setElementHoldPanel(2, "250px", "1300px", "175px", "700px");
-setName("100px");
 footerTag();
 
-//$(document).ready();
+//--------------------------------------------------------Page Loading--------------------------------------------------
 
-function loadPage(){
+function loadPage() {
     console.log("Document is ready");
-    $(".segment").css("position","fixed");
-    $(".ui").css("z-index",9999999999999999);
-    $(".segment").css("width","100%");
-    $(".segment").css("height","100%");
+    $(".segment").css("position", "fixed");
+    $(".ui").css("z-index", 9999999999999999);
+    $(".segment").css("width", "100%");
+    $(".segment").css("height", "100%");
 }
 
-$(window).on("load", function(){
+$(window).on("load", function () {
     console.log("Loading done")
-    $(".ui").remove();
+    setTimeout(function () {
+        $(".ui").remove();
+    }, 1000);
 });

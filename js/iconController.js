@@ -121,17 +121,3 @@ countBlackPiece++;
 $("#div-element88").append(element.getElement(count));
 element.setImage(count, "url('images/Rook-white_256x256_32.png')");
 element.setElement(count, "white");
-
-/*$( function() {
- for(var eleCount=0;eleCount<32;eleCount++){
- $("#image-element"+(eleCount+1)).draggable({
- containment:"#div-board",
- });
- }
- } );*/
-
-
-
-
-
-
