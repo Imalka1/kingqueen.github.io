@@ -289,5 +289,5 @@ $(document).ready(function(){
 
 $(window).on("load", function(){
     console.log("Loading done")
-    //$(".ui").remove();
+    $(".ui").remove();
 });
