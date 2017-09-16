@@ -103,6 +103,7 @@ function setName(size2) {
     $("#headName").css("top", "50%");
     $("#headName").css("left", "50%");
     $("#headName").css("transform", "translate(-50%, -50%)");
+    $("#headName").text("King Queen Chess (www.kingqueenchess.tk)");
 }
 
 function setTextSize(i) {
@@ -212,6 +213,7 @@ function footerTag() {
     $("#nameText").css("left", "50%");
     $("#nameText").css("transform", "translateX(-50%)");
     $("#nameText").css("text-align", "center");
+    $("#nameText").text("Developed By Imalka Gunawardana");
 }
 
 function setFooter(k) {
