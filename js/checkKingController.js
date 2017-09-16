@@ -116,7 +116,7 @@ function setCheck1(j, k, m) {
             intervalColor = setInterval(function () {
                 setColorDiv(m);
             }, 500);
-            console.log("pawn")
+            whiteKingCheck++;
         }
         if ($("#div-element" + (parseInt(j) + 9)).children().length == 1 && $("#div-element" + (parseInt(j) + 9)).children().attr('class') == "white" && $("#div-element" + (parseInt(j) + 9)).children().attr('id') == "image-element29") {
             colorOfDiv = $("#image-element29").parents(".chessArea").css("background-color");
@@ -126,7 +126,7 @@ function setCheck1(j, k, m) {
             intervalColor = setInterval(function () {
                 setColorDiv(m);
             }, 500);
-            console.log("pawn")
+            whiteKingCheck++;
         }
     } else if (k == "white") {
         if ($("#div-element" + (parseInt(j) - 9)).children().length == 1 && $("#div-element" + (parseInt(j) - 9)).children().attr('class') == "black" && $("#div-element" + (parseInt(j) - 9)).children().attr('id') == "image-element5") {
@@ -137,7 +137,7 @@ function setCheck1(j, k, m) {
             intervalColor = setInterval(function () {
                 setColorDiv(m);
             }, 500);
-            console.log("pawn")
+            blackKingCheck++;
         }
         if ($("#div-element" + (parseInt(j) - 11)).children().length == 1 && $("#div-element" + (parseInt(j) - 11)).children().attr('class') == "black" && $("#div-element" + (parseInt(j) - 11)).children().attr('id') == "image-element5") {
             colorOfDiv = $("#image-element5").parents(".chessArea").css("background-color");
@@ -147,7 +147,7 @@ function setCheck1(j, k, m) {
             intervalColor = setInterval(function () {
                 setColorDiv(m);
             }, 500);
-            console.log("pawn")
+            blackKingCheck++;
         }
     }
 }
@@ -178,7 +178,11 @@ function setCheck2(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("rook")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - topPos)).children().length == 1 && $("#div-element" + (parseInt(j) - topPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) - topPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -188,7 +192,11 @@ function setCheck2(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("rook")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + leftPos)).children().length == 1 && $("#div-element" + (parseInt(j) + leftPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) + leftPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -198,7 +206,11 @@ function setCheck2(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("rook")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - rightPos)).children().length == 1 && $("#div-element" + (parseInt(j) - rightPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) - rightPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -208,7 +220,11 @@ function setCheck2(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("rook")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
 }
 
@@ -238,7 +254,11 @@ function setCheck3(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("bishop")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + leftBottom)).children().length == 1 && $("#div-element" + (parseInt(j) + leftBottom)).children().attr('class') == k && $("#div-element" + (parseInt(j) + leftBottom)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -248,7 +268,11 @@ function setCheck3(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("bishop")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - rightTop)).children().length == 1 && $("#div-element" + (parseInt(j) - rightTop)).children().attr('class') == k && $("#div-element" + (parseInt(j) - rightTop)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -258,7 +282,11 @@ function setCheck3(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("bishop")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + rightBottom)).children().length == 1 && $("#div-element" + (parseInt(j) + rightBottom)).children().attr('class') == k && $("#div-element" + (parseInt(j) + rightBottom)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -268,7 +296,11 @@ function setCheck3(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("bishop")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
 
 }
@@ -312,7 +344,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - topPos)).children().length == 1 && $("#div-element" + (parseInt(j) - topPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) - topPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -322,7 +358,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + leftPos)).children().length == 1 && $("#div-element" + (parseInt(j) + leftPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) + leftPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -332,7 +372,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - rightPos)).children().length == 1 && $("#div-element" + (parseInt(j) - rightPos)).children().attr('class') == k && $("#div-element" + (parseInt(j) - rightPos)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -342,7 +386,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - leftTop)).children().length == 1 && $("#div-element" + (parseInt(j) - leftTop)).children().attr('class') == k && $("#div-element" + (parseInt(j) - leftTop)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -352,7 +400,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + leftBottom)).children().length == 1 && $("#div-element" + (parseInt(j) + leftBottom)).children().attr('class') == k && $("#div-element" + (parseInt(j) + leftBottom)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -362,7 +414,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) - rightTop)).children().length == 1 && $("#div-element" + (parseInt(j) - rightTop)).children().attr('class') == k && $("#div-element" + (parseInt(j) - rightTop)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -372,7 +428,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (parseInt(j) + rightBottom)).children().length == 1 && $("#div-element" + (parseInt(j) + rightBottom)).children().attr('class') == k && $("#div-element" + (parseInt(j) + rightBottom)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -382,7 +442,11 @@ function setCheck4(j, k, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("queen")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
 }
 
@@ -400,7 +464,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knLeftTop - 1)).children().length == 1 && $("#div-element" + (knLeftTop - 1)).children().attr('class') == col && $("#div-element" + (knLeftTop - 1)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -410,7 +478,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knLeftBottom + 10)).children().length == 1 && $("#div-element" + (knLeftBottom + 10)).children().attr('class') == col && $("#div-element" + (knLeftBottom + 10)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -420,7 +492,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knLeftBottom - 1)).children().length == 1 && $("#div-element" + (knLeftBottom - 1)).children().attr('class') == col && $("#div-element" + (knLeftBottom - 1)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -430,7 +506,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knRightTop - 10)).children().length == 1 && $("#div-element" + (knRightTop - 10)).children().attr('class') == col && $("#div-element" + (knRightTop - 10)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -440,7 +520,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knRightTop + 1)).children().length == 1 && $("#div-element" + (knRightTop + 1)).children().attr('class') == col && $("#div-element" + (knRightTop + 1)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -450,7 +534,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knRightBottom + 10)).children().length == 1 && $("#div-element" + (knRightBottom + 10)).children().attr('class') == col && $("#div-element" + (knRightBottom + 10)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -460,7 +548,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
     if ($("#div-element" + (knRightBottom + 1)).children().length == 1 && $("#div-element" + (knRightBottom + 1)).children().attr('class') == col && $("#div-element" + (knRightBottom + 1)).children().attr('id') == "image-element" + l) {
         colorOfDiv = $("#image-element" + l).parents(".chessArea").css("background-color");
@@ -470,7 +562,11 @@ function setCheck5(j, col, l, m) {
         intervalColor = setInterval(function () {
             setColorDiv(m);
         }, 500);
-        console.log("Knight")
+        if(m==1){
+            blackKingCheck++;
+        }else{
+            whiteKingCheck++;
+        }
     }
 }
 var colorCount = 0;
